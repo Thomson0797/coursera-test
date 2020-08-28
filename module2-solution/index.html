@@ -1,3 +1,52 @@
-<HTML>
+<!doctype html>
+<html lang="en" ng-app="ShoppingListCheckOff">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+      .message { font-size: 1.3em; font-weight: bold; }
+    </style>
+  </head>
+  
+  <body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+
+  <div class="row">
+
     
-</HTML>
+    <div class="col-md-6">
+     
+     <div ng-controller="ToBuyShoppingController as list1">
+	 <h2>To Buy</h2>
+       <ul>
+          <li ng-repeat="x in list1.items">
+            Buy {{x.quantity}} {{x.item_name}}  <button class="btn btn-info" ng-click="list1.itemremove($index);">Bought</button>
+          </li>
+       </ul>
+       <div class="emptyMessage" ng-hide="list1.items.length!=0">Everything is bought!</div>
+      </div>
+    </div>
+
+    
+    <div class="col-md-6">
+      <div id="list" ng-controller="AlreadyBoughtShoppingController as list2">
+        <h2>Already Bought:</h2>
+        <ul>
+          <li ng-repeat="item2 in list2.items">Bought {{item2.quantity}} {{item2.item_name}}</li>
+        </ul>
+        <div class="emptyMessage" ng-hide="list2.items.length!=0">Nothing bought yet.</div>
+     </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
